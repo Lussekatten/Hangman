@@ -66,10 +66,16 @@ namespace HangmanByLuc
                             }
                         }
                     }
-
-                    UpdateStatus(mistakesLeft, userCompleteGuess, sb);
-                    Console.WriteLine($"Secret word: {secretWord}");
-
+                    if (lettersFound == secretWord.Length)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nCongratulations! You found the secret word!");
+                    }
+                    else
+                    {
+                        UpdateStatus(mistakesLeft, userCompleteGuess, sb);
+                    }
+                 
                 }
                 else
                 {
@@ -84,8 +90,7 @@ namespace HangmanByLuc
                     else
                     {
                         mistakesLeft--;
-                        UpdateStatus(mistakesLeft, userCompleteGuess, sb);
-                        Console.WriteLine($"Secret word: {secretWord}");
+                        UpdateStatus(mistakesLeft, userCompleteGuess, sb);                    
                     }
                 }
                 //We must also check if the user has any guessing attempts left and exit the loop if the limit
@@ -97,6 +102,7 @@ namespace HangmanByLuc
                 }
             }
 
+            Console.WriteLine($"The correct word was: {secretWord}");
             Console.WriteLine("---- The end ----");
         }
 
